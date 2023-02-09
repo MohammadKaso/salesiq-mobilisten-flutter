@@ -176,6 +176,8 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
                 ZohoSalesIQ.FAQ.setListener(listener);
                 ZohoSalesIQ.ChatActions.setListener(listener);
                 ZohoSalesIQ.Notification.setListener(listener);
+                finalResult.success(null);
+
                 break;
 
             case "showLauncher":
