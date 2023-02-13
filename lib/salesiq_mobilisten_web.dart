@@ -6,7 +6,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:js/js.dart';
 
 @JS("initZoho")
-external Future _initZoho();
+external Future _initZoho(String widgetKey);
 
 @JS("setHistoryVisibility")
 external Future _setHistoryVisibility(String visibility);
@@ -81,7 +81,8 @@ class MobilistenWebPlugin {
   Future<dynamic> handleMethodCall(MethodCall call) async {
     switch (call.method) {
       case 'init':
-        return init();
+        print(call.arguments.runtimeType);
+        return init((call.arguments)['webWidgetKey']);
       case 'showLauncher':
         return notImplemented(call.method);
       case 'setConversationVisibility':
@@ -132,8 +133,8 @@ class MobilistenWebPlugin {
   }
 
   /// Returns a [String] containing the version of the platform.
-  Future<void> init() async {
-    final promise = _initZoho();
+  Future<void> init(String widgetKey) async {
+    final promise = _initZoho(widgetKey);
     return await promiseToFuture(promise);
   }
 
