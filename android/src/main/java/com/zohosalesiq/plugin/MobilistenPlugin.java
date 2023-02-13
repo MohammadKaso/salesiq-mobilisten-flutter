@@ -75,6 +75,8 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
     private Activity activity;
 
     private static String fcmtoken = null;
+    public static boolean isInitialized = false;
+
     private static Boolean istestdevice = true;
 
     private EventChannel.EventSink eventSink, chatEventSink, faqEventSink;
@@ -178,6 +180,7 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
                 ZohoSalesIQ.FAQ.setListener(listener);
                 ZohoSalesIQ.ChatActions.setListener(listener);
                 ZohoSalesIQ.Notification.setListener(listener);
+                isInitialized=true;
                 break;
 
             case "showLauncher":
@@ -241,7 +244,8 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
                 break;
 
             case "unregisterVisitor":  //need to pass the current activity
-                ZohoSalesIQ.unregisterVisitor(activity);  //need to pass the current activity
+                ZohoSalesIQ.unregisterVisitor(activity);
+                isInitialized=false;//need to pass the current activity
                 break;
 
             case "setPageTitle":
