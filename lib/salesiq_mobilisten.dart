@@ -583,6 +583,10 @@ class ZohoSalesIQ {
   static void printDebugLogsForAndroid(bool value) {
     _channel.invokeMethod('printDebugLogsForAndroid', value);
   }
+
+  static void clearData() {
+    _channel.invokeMethod('clearData');
+  }
 }
 
 class SIQChat {
