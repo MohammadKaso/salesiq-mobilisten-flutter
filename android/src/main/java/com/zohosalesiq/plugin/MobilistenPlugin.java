@@ -188,7 +188,7 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
                 handler = new Handler(Looper.getMainLooper());
                 handler.post(new Runnable() {
                     public void run() {
-                        if (activity != null) {
+                        if (activity != null&& ZohoSalesIQ.getApplicationManager() != null) {
                             ZohoSalesIQ.getApplicationManager().setCurrentActivity(activity);
                             ZohoSalesIQ.getApplicationManager().refreshChatBubble();
                         }
