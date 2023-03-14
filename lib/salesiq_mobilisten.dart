@@ -47,6 +47,12 @@ class ZohoSalesIQ {
     _channel.invokeMethod('showFloatingWindow', message);
   }
 
+  static Future<bool> isInitialized() async {
+    return await _channel.invokeMethod(
+      'isInitialized',
+    );
+  }
+
   static void triggerFloatButtonVisibility() {
     _channel.invokeMethod("triggerFloatButtonVisibility");
   }

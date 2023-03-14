@@ -167,6 +167,9 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result rawResult) {
         final Result finalResult = rawResult;
         switch (call.method) {
+            case "isInitialized":
+                finalResult.success(isInitialized);
+                break;
             case "init":
                 String fcmToken = LiveChatUtil.getString(call.argument("fcmToken")); // No I18N
                 this.fcmtoken = fcmToken;
@@ -245,7 +248,6 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
 
             case "unregisterVisitor":  //need to pass the current activity
                 ZohoSalesIQ.unregisterVisitor(activity);
-                isInitialized=false;//need to pass the current activity
                 break;
 
             case "setPageTitle":
