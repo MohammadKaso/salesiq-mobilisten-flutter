@@ -248,6 +248,7 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
 
             case "unregisterVisitor":  //need to pass the current activity
                 ZohoSalesIQ.unregisterVisitor(activity);
+                isInitialized=false;
                 break;
 
             case "setPageTitle":
