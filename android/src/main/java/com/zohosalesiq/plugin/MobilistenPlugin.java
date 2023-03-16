@@ -931,16 +931,18 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
     }
 
     public static void handleNotification(final Application application, final Map extras){
-        SharedPreferences sharedPreferences = application.getSharedPreferences("siq_session", 0);         // No I18N
-        final String appKey = sharedPreferences.getString("salesiq_appkey", null);         // No I18N
-        final String accessKey = sharedPreferences.getString("salesiq_accesskey", null);         // No I18N
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            public void run() {
-                initSalesIQ(application,  null, appKey, accessKey, null);
-                ZohoSalesIQ.Notification.handle(application, extras);
-            }
-        });
+        if(application !=null) {
+            SharedPreferences sharedPreferences = application.getSharedPreferences("siq_session", 0);         // No I18N
+            final String appKey = sharedPreferences.getString("salesiq_appkey", null);         // No I18N
+            final String accessKey = sharedPreferences.getString("salesiq_accesskey", null);         // No I18N
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.post(new Runnable() {
+                public void run() {
+                    initSalesIQ(application, null, appKey, accessKey, null);
+                    ZohoSalesIQ.Notification.handle(application, extras);
+                }
+            });
+        }
     }
 
     public static void enablePush(String token, Boolean testdevice) {
