@@ -202,6 +202,10 @@ class ZohoSalesIQ {
     await _channel.invokeMethod('setVisitorAddInfo', addInfo);
   }
 
+  static Future<Null> setVisitorAddInfoObject(addInfo) async {
+    await _channel.invokeMethod('setVisitorAddInfoObject', addInfo);
+  }
+
   /// Sets the visitor's secondary location.
   static Future<Null> setVisitorLocation(
       SIQVisitorLocation locationDetails) async {

@@ -29,8 +29,8 @@ external Future _setVisitorEmail(String email);
 @JS("setDepartment")
 external Future _setDepartment(String department);
 
-@JS("setVisitorAddInfo")
-external Future _setVisitorAddInfo(String key, dynamic value);
+@JS("setVisitorAddInfoObject")
+external Future _setVisitorAddInfoObject(object);
 
 @JS("startChat")
 external Future _startChat(String? question);
@@ -107,8 +107,8 @@ class MobilistenWebPlugin {
         return notImplemented(call.method);
       case 'setDepartment':
         return setDepartment(call.arguments as String);
-      case 'setVisitorAddInfo':
-        return setVisitorAddInfo(call.arguments);
+      case 'setVisitorAddInfoObject':
+        return setVisitorAddInfoObject((call.arguments));
       case 'setPageTitle':
         return notImplemented(call.method);
       case 'startChat':
@@ -177,8 +177,8 @@ class MobilistenWebPlugin {
     return await promiseToFuture(promise);
   }
 
-  Future<void> setVisitorAddInfo(info) async {
-    final promise = _setVisitorAddInfo(info['key'], info['value']);
+  Future<void> setVisitorAddInfoObject(map) async {
+    final promise = _setVisitorAddInfoObject(jsify(map));
     return await promiseToFuture(promise);
   }
 
