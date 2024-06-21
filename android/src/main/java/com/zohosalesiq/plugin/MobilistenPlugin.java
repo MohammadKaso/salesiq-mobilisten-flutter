@@ -199,6 +199,11 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
                 });
                 break;
 
+            case "clearData":
+                final Application context = application;
+                ZohoSalesIQ.clearData(context);
+                break;
+
             case "setLanguage":
                 ZohoSalesIQ.Chat.setLanguage(LiveChatUtil.getString(call.arguments));
                 break;
@@ -694,7 +699,7 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
             break;
             case "syncThemeWithOSForAndroid":
                 ZohoSalesIQ.syncThemeWithOS((Boolean) call.arguments);
-                break;
+            break;
             case "setThemeColorForiOS":
             case "writeLogForiOS":
             case "clearLogForiOS":
